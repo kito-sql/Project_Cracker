@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+
+
+int guess(int number) {
+
+    int n[3];
+    n[0] = ( number / 100 ) % 10;
+    n[1] = ( number / 10 ) % 10;
+    n[2] =number % 10 ;
+
+    char g[4];  
+    char check[4];  
+    check[3] = '\0';
+
+    bool test = false;
+
+    while (!test) {
+
+        printf("your guess : ");
+        scanf("%3s", g);
+
+        // converting to str
+        int x[3];
+        for (int i = 0; i < 3; i++) {
+            x[i] = g[i] - '0';
+        }
+
+        // all red x.x
+        for (int i = 0; i < 3; i++){ 
+        check[i] = 'r' ; 
+        }
+
+        //  blue ??
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (x[i] == n[j]) {
+                    check[i] = 'b';  
+                }
+            }
+            
+            // green ?!!
+            if (x[i] == n[i]) {
+                check[i] = 'g';       
+            }
+        }
+
+    
+
+        // is it  "ggg" yet?
+        if (strcmp(check, "ggg") == 0) {
+            test = true;
+        }
+    }
+
+    printf("good guess");
+    return 0;
+}
+
+int main() {
+
+    int i;
+
+    int game[5] = {123, 345, 567, 789, 159};
+
+    printf("choose game number 0-4 : ");
+    scanf("%d", &i);
+
+    if (i >= 0 && i < 5) {
+        guess(game[i]);
+    } else {
+        printf("invalid choice \n");
+    }
+
+    return 0;
+}
