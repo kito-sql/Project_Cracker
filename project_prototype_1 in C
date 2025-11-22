@@ -63,7 +63,7 @@ int main() {
 
     int i;
 
-    int game[5] = {123, 345, 567, 789, 159};
+    int game[5] = {154, 587, 819, 605, 702};
 
     printf("choose game number 0-4 : ");
     scanf("%d", &i);
